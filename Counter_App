@@ -1,0 +1,35 @@
+#Counter App using Python
+
+
+import counter_app
+from counter_app import home_page, app, show, db
+
+#root '/'
+#increment '/increment'
+#database = {'number':0}
+#db = permanent stored database
+#db = = {'number':0}
+
+
+@app.route('/')
+def home():
+  return show(page=home_page, number = db['number'] )
+@app.route('/increment')
+
+def increment():
+  #increments a number
+  db['number'] +=1
+  return show(page=home_page, number = db['number'] )
+#app.run(host='0.0.0.0', port=81)
+
+#'''
+#write function called decrement 
+#'''
+@app.route('/decrement')
+ 
+def decrement():
+  #decrease a number
+  db['number'] -=1
+  #print(db)
+  return show(page=home_page, number = db['number'] )
+app.run(host='0.0.0.0', port=81)
